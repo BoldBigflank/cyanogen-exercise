@@ -3,14 +3,13 @@ app = Flask(__name__)
 import time, json
 
 # Front End
-@app.route("/")
+@app.route("/time")
 def index():
-    return send_file('templates/index.html')
+    return send_file('templates/time.html')
 
 # Back End
 @app.route("/api/v1/time")
 def timestamp():
-    
     return json.dumps({"time": int(time.time())})
 
 @app.route("/api/v1/widget", methods=['GET', 'POST'])
