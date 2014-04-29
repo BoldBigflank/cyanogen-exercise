@@ -3,7 +3,8 @@ app = Flask(__name__)
 import time, json
 
 
-widgets = ["a", "b", "c"]
+widgets = []
+# [{"name":"aaa"}, {"name":"bbb"}, {"name":"ccc"}]
 
 
 # @app.route('/widgets')
@@ -18,7 +19,11 @@ def timestamp():
 @app.route("/api/v1/widget", methods=['GET', 'POST'])
 def widget():
     if request.method == 'POST':
-        widgets.append(request.form['widget'])
+        # time.sleep(3)
+        print request.data
+        body = json.loads(request.data);
+        print body["widget"]
+        widgets.append({"name":body["widget"]})
         return "OK"
     else:
         return json.dumps(widgets)
