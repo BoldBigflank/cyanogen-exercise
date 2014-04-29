@@ -1,7 +1,8 @@
-var timeApp = angular.module('timeApp', ['ngRoute', 'timeControllers'])
+var timeApp = angular.module('timeApp', ['ngRoute', 'timeControllers', 'widgetServices'])
  
-.config(['$routeProvider', 
-	function($routeProvider){
+.config(
+	function($routeProvider, $locationProvider){
+		$locationProvider.html5Mode(true);
 		$routeProvider.
 			when('/time', {
 				templateUrl: 'partials/time.html',
@@ -14,4 +15,5 @@ var timeApp = angular.module('timeApp', ['ngRoute', 'timeControllers'])
 			otherwise({
 				redirectTo: '/time'
 			})
-	}])
+	})
+

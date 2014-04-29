@@ -12,10 +12,13 @@ timeControllers.controller('TimeCtrl', function ($scope, $http) {
  	$scope.loadData();
 });
 
-timeControllers.controller('WidgetsCtrl', function($scope, $http){
-	$http.get('/api/v1/widgets').success(function(data){
-		$scope.widgets = data.widgets
-	})
+// timeControllers.controller('WidgetsCtrl', ['$scope', 'Widget', function($scope, Widget) {
+//   $scope.phones = Phone.query();
+//   $scope.orderProp = 'age';
+// }]);
 
+timeControllers.controller('WidgetsCtrl', ['$scope', "Widget", function($scope, Widget){
+	
+	$scope.widgets = Widget.query();
 
-})
+}]);

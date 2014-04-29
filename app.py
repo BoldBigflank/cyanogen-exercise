@@ -3,7 +3,7 @@ app = Flask(__name__)
 import time, json
 
 
-widgets = []
+widgets = ["a", "b", "c"]
 
 
 # @app.route('/widgets')
@@ -21,7 +21,7 @@ def widget():
         widgets.append(request.form['widget'])
         return "OK"
     else:
-        return json.dumps({"widgets":widgets})
+        return json.dumps(widgets)
 
 # Front End
 # @app.route('/time', defaults={'path':''})
