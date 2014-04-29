@@ -1,9 +1,10 @@
-var timeApp = angular.module('timeApp', []);
- 
-timeApp.controller('TimeCtrl', function ($scope, $http) {
+var timeControllers = angular.module('timeControllers', []);
+
+timeControllers.controller('TimeCtrl', function ($scope, $http) {
+	$scope.name = "Alex";
 	$scope.loadData = function(){
-		$http.get('api/v1/time').success(function(data) {
-			$scope.timestamp = data.time;
+		$http.get('/api/v1/time').success(function(data) {
+			$scope.timestamp = data.string;
 		});
 	}
 
@@ -11,3 +12,10 @@ timeApp.controller('TimeCtrl', function ($scope, $http) {
  	$scope.loadData();
 });
 
+timeControllers.controller('WidgetsCtrl', function($scope, $http){
+	$http.get('/api/v1/widgets').success(function(data){
+		$scope.widgets = data.widgets
+	})
+
+
+})
