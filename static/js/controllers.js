@@ -22,17 +22,12 @@ timeControllers.controller('WidgetsCtrl', ['$scope', "Widget", function($scope, 
 		
 
 		Widget.create({widget:$scope.widgetName}, function() {
-			console.log("Done!")
+			// console.log("Done!")
 			$scope.widgets = Widget.query(function(){
-				console.log("Done Again!")
+				// console.log("Done Again!");
 			});
 			$scope.networkActivity = false;
-
-	    	// $timeout(function() { 
-	    	// 	console.log("Complete"); //$location.path('/'); 
-	    	// });
 	    });
-		// $scope.widgets.push($scope.widgetName)
 		$scope.widgetName = "";
 	}
 }]);

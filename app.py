@@ -2,14 +2,7 @@ from flask import Flask, render_template, send_file, request, send_from_director
 app = Flask(__name__)
 import time, json
 
-
-widgets = []
-# [{"name":"aaa"}, {"name":"bbb"}, {"name":"ccc"}]
-
-
-# @app.route('/widgets')
-# def widgets_page():
-# 	return send_file('templates/widgets.html')
+widgets = [] #isn't my database wonderful?
 
 # Back End
 @app.route("/api/v1/time")
@@ -20,16 +13,13 @@ def timestamp():
 def widget():
     if request.method == 'POST':
         # time.sleep(3)
-        print request.data
         body = json.loads(request.data);
-        print body["widget"]
         widgets.append({"name":body["widget"]})
         return "OK"
     else:
         return json.dumps(widgets)
 
 # Front End
-# @app.route('/time', defaults={'path':''})
 
 @app.route('/partials/<path:filename>')
 def send_partial(filename):

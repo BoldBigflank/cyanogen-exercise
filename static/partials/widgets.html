@@ -1,13 +1,26 @@
-<p>
+<div class="col-sm-4 col-sm-offset-4">
+
 	<h2>Widgets List</h2>
-	<label ng-hide="!networkActivity">Loading...</label>
-	<table>
-		<tr ng-repeat="widget in widgets">
-			<td>{{widget.name}}</td>
-		</tr>
-		<tr ng-hide="widgets.length"><td>No widgets found.</td></tr>
+	<div ng-hide="!networkActivity" class="alert alert-info">Loading...</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Widgets</th>
+			</td>
+		</thead>
+		<tbody>
+			<tr ng-repeat="widget in widgets">
+				<td>{{widget.name}}</td>
+			</tr>
+			<tr ng-hide="widgets.length"><td>No widgets found.</td></tr>
+		</tbody>
 	</table>
-	<form ng-submit="addWidget()">
-		<input type="text" ng-model="widgetName" ng-disabled="networkActivity" value="{{widgetName}}" placeholder="Enter Widget"></input>
-		<button type="Submit" ng-click="setImage(img)" ng-disabled="networkActivity">Add</button>
-</p>
+	 <form ng-submit="addWidget()" class="form-signin" role="form">
+	 	
+	        <h2 class="form-signin-heading">Add a Widget</h2>
+	        <input type="text" class="form-control" ng-model="widgetName" ng-disabled="networkActivity" value="{{widgetName}}" placeholder="Enter Widget">
+	        
+	        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="networkActivity">Add</button>
+	    
+      </form>
+<div class="col-sm-4 col-sm-offset-4">
